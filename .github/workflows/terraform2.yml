@@ -1,7 +1,9 @@
+name: sierra
+
 on:
   push:
-    branches:
-    - main
+    paths:
+      - main
       
 env:
   AWS_REGION: us-east-2
@@ -11,20 +13,16 @@ jobs:
     name: 'Terraform Pipeline'
     runs-on: ubuntu-latest
     env:
-      working-directory: ./sierra/test
+      working-directory: ./sierra/tcs
 
-  defaults:
-    run:
-     shell: bash
+    defaults:
+      run:
+        shell: bash
 
-  steps:
-  
+    steps:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
@@ -40,7 +38,8 @@ jobs:
     - name: Terraform Init
       id: init
       run: terraform init
-      working-directory: ${{ env.w
+      working-directory: ${{ env.working-directory }}
+
     - name: Terraform Format
       id: fmt
       run: terraform fmt -check
@@ -55,6 +54,12 @@ jobs:
       run: terraform plan -no-color
       continue-on-error: true
       working-directory: ${{ env.working-directory }}
+
+    - name: Terraform Plan Status
+      if: steps.plan.outcome == 'failure'
+      run: exit 1
+
     - name: Terraform Apply
-      id: apply
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
+      working-directory: ${{ env.working-directory }}
