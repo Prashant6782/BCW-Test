@@ -2,7 +2,8 @@ name: sierra
 
 on:
   push:
-    - main
+    branches:
+      - main
       
 env:
   AWS_REGION: us-east-2
