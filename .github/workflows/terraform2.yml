@@ -13,18 +13,18 @@ jobs:
     env:
       working-directory: ./sierra/test
 
-    defaults:
+  defaults:
       run:
         shell: bash
 
-    steps:
+  steps:
     - name: Checkout
       uses: actions/checkout@v2
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
-  - name: Setup Terraform
+    - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 1.0.11
@@ -54,3 +54,7 @@ jobs:
       run: terraform plan -no-color
       continue-on-error: true
       working-directory: ${{ env.working-directory }}
+    - name: Terraform Apply
+      id: apply
+      run: terraform apply
+      
