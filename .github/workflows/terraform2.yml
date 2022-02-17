@@ -17,7 +17,7 @@ jobs:
       run:
         shell: bash
 
-  steps:
+    steps:
   
     - name: Checkout
       uses: actions/checkout@v2
@@ -57,5 +57,4 @@ jobs:
       working-directory: ${{ env.working-directory }}
     - name: Terraform Apply
       id: apply
-      run: terraform apply
-      
+      run: terraform apply -auto-approve
