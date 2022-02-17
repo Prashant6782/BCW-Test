@@ -7,10 +7,10 @@ on:
   pull_request:
 
 jobs:
-  terraform:
-    name: 'Terraform'
-    runs-on: ubuntu-latest
-    environment: test
+    terraform:
+      name: 'Terraform'
+      runs-on: ubuntu-latest
+      environment: test
 
     
     defaults:
