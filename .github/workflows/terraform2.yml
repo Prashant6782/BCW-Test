@@ -13,8 +13,8 @@ jobs:
     name: 'Terraform Pipeline'
     runs-on: ubuntu-latest
     env:
-      working-directory:
-
+      working-directory: 
+      
     defaults:
       run:
         shell: bash
