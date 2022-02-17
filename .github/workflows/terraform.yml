@@ -22,7 +22,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 env:
-
    AWS_ACCESS_KEY: ${{secret.AWS_ACCESS_KEY}}
    AWS_SECRET_ACCESS_KEY: ${{secret.AWS_SECRET_KEY}}
    
