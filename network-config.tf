@@ -45,7 +45,7 @@ resource "aws_route_table" "public-connect" {
 }
 
 resource "aws_nat_gateway" "bcw" {
-  public ip  18.210.52.49
+  connectivity_type = "private"
   subnet_id     = aws_subnet.test-subnet-public-2.id
 
   depends_on = [aws_internet_gateway.test-igw]
