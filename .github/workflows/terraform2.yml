@@ -2,8 +2,7 @@ name: sierra
 
 on:
   push:
-    paths:
-      - main
+    - main
       
 env:
   AWS_REGION: us-east-2
