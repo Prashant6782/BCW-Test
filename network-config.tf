@@ -43,14 +43,8 @@ resource "aws_route_table" "public-connect" {
         gateway_id = "${aws_internet_gateway.test-igw.id}" 
     }
 }
-
-<<<<<<< HEAD
 resource "aws_nat_gateway" "sierra-nat" {
-=======
-resource "aws_nat_gateway" "bcw" {
->>>>>>> 2d4c9c03d7405998ad64c800249394da10a38cf6
   connectivity_type = "private"
   subnet_id     = aws_subnet.test-subnet-public-2.id
-
   depends_on = [aws_internet_gateway.test-igw]
 }
