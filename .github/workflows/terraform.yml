@@ -21,9 +21,9 @@ jobs:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
       uses: actions/checkout@v2
-env:
-   AWS_ACCESS_KEY: ${{secret.AWS_ACCESS_KEY}}
-   AWS_SECRET_ACCESS_KEY: ${{secret.AWS_SECRET_KEY}}
+    env:
+        AWS_ACCESS_KEY: ${{secret.AWS_ACCESS_KEY}}
+        AWS_SECRET_ACCESS_KEY: ${{secret.AWS_SECRET_KEY}}
    
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
